@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciencia y Robótica</title>
+    
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CONTENEDOR DEL MENÚ FLOTANTE -->
+    <div class="menu-contenedor">
+        <button class="btn-abrir-menu" onclick="intercambiarMenu()">☰ Menú</button>
+        
+        <div id="opciones-desplegables" class="opciones-menu">
+            <button onclick="mostrarSeccion('pantalla-inicio')">🏠 Inicio</button>
+            <button onclick="mostrarSeccion('seccion-control')">📱 Datos curiosos</button>
+            <button onclick="mostrarSeccion('seccion-glosario')">📖 Glosario</button>
+            <button onclick="mostrarSeccion('seccion-juegos')">🎮 Zona de juegos</button>
+        </div>
+    </div>
+
+    <div id="pantalla-inicio" class="inicio-completo"></div>
+
+    <div class="seccion-blanca-bloques">
+        <div class="rejilla-principal">
+            <h2 class="titulo-grupo">Importancia de esto en nuestro proyecto:</h2>
+            <div id="seccion-quimica" class="bloque-caja caja-con-imagen" onclick="abrirQuimica()">
+                <div class="capa-oscura"></div>
+                <h2>Sistema nervioso</h2>
+            </div>
+            <div id="seccion-biologia" class="bloque-caja caja-con-imagen" onclick="abrirBiologia()">
+                <div class="capa-oscura"></div>
+                <h2>Neurotransmisores</h2>
+            </div>
+            <div id="seccion-fisica" class="bloque-caja caja-con-imagen" onclick="abrirFisica()">
+                <div class="capa-oscura"></div>
+                <h2>Músculos</h2>
+            </div>
+            <h2 class="titulo-grupo">Área de Robótica</h2>
+            <div id="seccion-control" class="bloque-caja caja-con-imagen" onclick="abrirControl()">
+                <div class="capa-oscura"></div>
+                <h2>Datos curiosos</h2>
+            </div>
+            <div id="seccion-glosario" class="bloque-caja caja-con-imagen" onclick="abrirGlosario()">
+                <div class="capa-oscura"></div>
+                <h2>Glosario</h2>
+            </div>
+        </div>
+
+        <!-- TÍTULO CONECTADO AL MENÚ FLOTANTE -->
+        <h2 id="seccion-juegos" class="titulo-grupo">🎮 Minijuegos</h2>
+
+        <div class="carrusel-juegos-contenedor">
+            <button class="flecha-carrusel izq" onclick="moverCarrusel(-1)">❮</button>
+
+            <div class="carrusel-ventana">
+                <div id="tira-juegos" class="menu-horizontal-juegos">
+                    
+                    <!-- Tarjeta Juego 1: Obeth -->
+                    <div id="portada-obeth" class="tarjeta-juego-contenedor caja-con-imagen" onclick="abrirObeth()" style="cursor: pointer;">
+                        <div class="capa-oscura"></div>
+                        <h3 style="color: white; position: relative; z-index: 2;"></h3>
+                    </div>
+
+                    <!-- Tarjeta Juego 2: Parábola -->
+                    <div id="portada-parabola" class="tarjeta-juego-contenedor caja-con-imagen" onclick="abrirParabola()" style="cursor: pointer;">
+                        <div class="capa-oscura"></div>
+                        <h3 style="color: white; position: relative; z-index: 2;"></h3>
+                    </div>
+
+                    <!-- Tarjeta Juego 3: Biomimética -->
+                    <div id="portada-biomimetica" class="tarjeta-juego-contenedor caja-con-imagen" onclick="abrirBiomimetica()" style="cursor: pointer;">
+                        <div class="capa-oscura"></div>
+                        <h3 style="color: white; position: relative; z-index: 2;"></h3>
+                    </div>
+
+            <button class="flecha-carrusel der" onclick="moverCarrusel(1)">❯</button>
+        </div>
+
+    <!-- VENTANAS EMERGENTES (MODALES CORREGIDOS) -->
+    <div id="modal-quimica" class="pantalla-emergente" onclick="cerrarFuera(event)">
+        <div class="contenido-emergente">
+            <h2>Sistema nervioso</h2>
+            <hr>
+            <p>El sistema nervioso envía impulsos eléctricos que ordenan a los músculos cuándo y cómo deben contraerse o relajarse, lo cual permite el movimiento y el funcionamiento del cuerpo</p>
+           <p>Control voluntario e involuntario:</p>
+            <ul>
+                <li>Movimientos voluntarios: El sistema nervioso somático controla los músculos esqueléticos de forma consciente.</li>
+                <li>Movimientos involuntarios:El sistema nervioso autónomo regula los músculos que funcionan que sin lo pensemos como los vasos sanguíneos y el corazón</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-fisica" class="pantalla-emergente" onclick="cerrarFuera(event)">
+        <div class="contenido-emergente">
+          <h2>Los músculos</h2>
+            <hr>
+            <h1>¿Qué son?</h1>
+            <p>Los músculos son órganos o tejidos blandos formados por células especializadas llamadas miocitos o fibras musculares. Tienen la capacidad de contraerse y relajarse —gracias a proteínas como la actina y la miosina— para generar fuerza y permitir el movimiento del cuerpo y de los órganos internos</p>
+            <h3>Aplicaciones en laboratorios y en el ambiente</h3>
+            <ul>
+                <li>Composición:El 75% del músculo es agua. El resto son proteínas (para la fuerza), glucógeno (azúcar guardada para tener energía) y grasas.</li>
+               <li>Minerales:Funcionan como interruptores eléctricos. El Calcio activa la contracción, el Sodio y Potasio transmiten la señal del cerebro, y el Magnesio ayuda a que el músculo se relaje.</li>
+                <li>Proteinas motoras:Se llaman Actina y Miosina. Son moléculas que se enganchan y se deslizan entre sí como cremalleras para acortar el músculo y moverlo. </li>
+                <li>ATP:El ATP es la molécula que lleva la energía química. El músculo la fabrica quemando oxígeno y glucosa para poder mover las proteínas.</li>
+            </ul> 
+        </div>
+    </div>
+    <div id="modal-biologia" class="pantalla-emergente" onclick="cerrarFuera(event)">
+        <div class="contenido-emergente">
+            <h2>Los neurotransmisores</h2>
+            <hr>
+            <h1>¿Qué son?</h1>
+            <p>Los neurotransmisores son los mensajeros químicos que permiten que el sistema nervioso se comunique con los músculos para ordenarles que se muevan o se relajen.</p>
+            <h3>Neurotransmisores de los músculos</h3>
+            <ul>
+                <li>Acetilcolina:Los neurotransmisores son los mensajeros químicos que permiten que el sistema nervioso se comunique con los músculos para ordenarles que se muevan o se relajen.</li>
+                <li>Glicina:actúa como freno en la médula espinal para permitir la relajación y coordinación muscular.</li>
+                <li>Adrenalina / Noradrenalina:Tensionan los músculos rápidamente para responder ante emergencias</li>
+            </ul>
+        </div>
+    </div>
+            
+
+    <div id="modal-control" class="pantalla-emergente" onclick="cerrarFuera(event)">
+        <div class="contenido-emergente">
+            <h2>Datos curiosos</h2>
+            <hr>
+            <p>¿Sabías que en tu cara tienes más de 40 músculos trabajando en equipo?</p>
+             <ul>
+                <li>Tenemos 43 músculos para hacer gestos y 3 para masticar. A diferencia de otros, estos se unen directo a la piel, lo que nos permite expresar emociones.</li>
+             </ul>
+            <p>¿Sabías que el músculo que jamás vas a poder controlar es el corazón?</p>
+             <ul>
+                <li>El miocardio (corazón) es 100% autónomo. Funciona con su propia electricidad química interna y late en automático sin que tú tengas que pensar en ello.</li>
+             </ul>
+              <p> ¿Sabías que hacer cara de enojado te agota más que sonreír?</p>
+             <ul>
+                <li>Para fruncir el ceño y poner cara seria usas hasta 43 músculos, mientras que para sonreír solo necesitas entre 12 y 17. ¡Sonreír ahorra muchísima energía química!</li>
+
+             </ul>
+             <p>¿Sabías que los zombis de las películas están basados en un fenómeno químico real llamado rigor mortis?</p>
+             <ul>
+            <li>Cuando alguien muere, el cuerpo deja de fabricar ATP (la molécula de la energía). Al no haber energía, las proteínas del músculo se quedan atrapadas y pegadas, haciendo que el cuerpo se ponga completamente rígido.</li>
+             </ul>
+            <p>¿Sabías que el músculo más fuerte del cuerpo en relación a su tamaño es la lengua?</p>
+             <ul>
+                <li> En realidad es un conjunto de 8 músculos diferentes que trabajan en equipo y tienen una fuerza de empuje increíble para masticar y hablar sin cansarse nunca.</li>
+             </ul> 
+        </div>
+    </div>
+
+    <div id="modal-glosario" class="pantalla-emergente" onclick="cerrarFuera(event)">
+        <div class="contenido-emergente">
+            <h2>Glosario</h2>
+            <hr>
+            <p><strong>Servomotor:</strong> Motor de precisión capaz de posicionarse en ángulos exactos.</p>
+            <p><strong>sistema somático:</strong> es la parte del sistema nervioso periférico que conecta el cerebro y la médula espinal con los músculos esqueléticos y los receptores sensoriales de la piel. Es el sistema que te permite interactuar conscientemente con el mundo físico.</p>
+             <p><strong>músculos esqueléticos:</strong> Motor de precisión capaz de posicionarse en ángulos exactos.</p>
+    </div>
+
+    <!-- MODALES DE MINIJUEGOS (CORREGIDOS) -->
+    <div id="modal-obeth" class="pantalla-emergente" onclick="cerrarFuera(event)">
+        <div class="contenido-emergente" style="max-width: 800px; background: #1a202c; color: white; border: 3px solid #4a5568;">
+            <h2 style="font-family: 'Orbitron', sans-serif; color: #63b3ed; text-align: center; margin-bottom: 5px;">🤖 Desafío Anatómico con Obeth</h2>
+            <p style="text-align: center; color: #a0aec0; margin-top: 0; font-size: 0.9rem;">El robot te hablará desde su parlante físico.</p>
+            <hr style="border-color: #2d3748;">
+
+            <!-- BOTÓN PARA ENLAZAR CON EL PUERTO SERIAL USB -->
+            <button onclick="conectarArduino()" style="width: 100%; padding: 12px; background: #3182ce; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">🔌 Conectar Sistema con el Robot (USB)</button>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; justify-content: center; margin-top: 20px;">
+                
+                <!-- COLUMNA IZQUIERDA: TU IMAGEN REAL CON LOS PUNTOS INTERACTIVOS -->
+                <div class="lienzo-rostro" style="position: relative; width: 320px; height: 320px; background: #2d3748; border-radius: 15px; box-shadow: 0 0 20px rgba(99, 179, 237, 0.2); display: flex; align-items: center; justify-content: center; overflow: visible;">
+                    
+                    <!-- Tu imagen real guardada en la carpeta del proyecto -->
+                    <img src="OBETH.jpg" alt="Músculos faciales" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px; display: block;">
+                    
+                    <!-- PUNTOS INTERACTIVOS ADAPTADOS EN COORDENADAS PARA TU IMAGEN -->
+                    <div class="punto-musculo frontal" onclick="validarRespuesta('frontal')" style="position: absolute; top: 18%; left: 50%; transform: translateX(-50%); z-index: 10;"></div>
+                    <div class="punto-musculo orbicular" onclick="validarRespuesta('orbicular')" style="position: absolute; top: 40%; left: 34%; z-index: 10;"></div>
+                    <div class="punto-musculo cigomatico" onclick="validarRespuesta('cigomatico')" style="position: absolute; top: 58%; left: 66%; z-index: 10;"></div>
+                </div>
+
+                <!-- COLUMNA DERECHA: CONSOLA DE DIÁLOGO, INTENTOS Y TRIVIA -->
+                <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background: #2d3748; border-radius: 15px; padding: 20px; border-left: 5px solid #63b3ed; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <span style="font-family: 'Orbitron', sans-serif; color: #63b3ed; font-size: 0.8rem; letter-spacing: 1px;">MÓDULO DE APRENDIZAJE </span>
+                            <span id="contador-intentos" style="font-family: 'Orbitron', sans-serif; color: #fc8181; font-size: 0.9rem; font-weight: bold;">❤️ Intentos: 3/3</span>
+                        </div>
+                        <p id="burbuja-dialogo-robot" style="font-size: 1.1rem; line-height: 1.5; color: #edf2f7; margin: 0; min-height: 80px;">
+                            Presiona el botón azul de arriba para conectar el puerto serie USB del Arduino...
+                        </p>
+                    </div>
+                    <button id="btn-reiniciar-trivia" class="btn-reinicio" onclick="reiniciarJuego()" style="width: 100%; padding: 10px; background: #e53e3e; border-radius: 8px; display: none; font-family: 'Orbitron', sans-serif;">🔄 Reiniciar Sistema</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+<div id="modal-parabola" class="pantalla-emergente" onclick="cerrarFuera(event)">
+    <div class="contenido-emergente">
+        <div class="contenedor-juego-fisica">
+            <h3>📐 Misión Parábola</h3>
+            <p class="instruccion-juego">Ajusta el ángulo del brazo para encestar la tuerca.</p>
+            <div class="marcador-juego-interno">
+                 <span>🔋 Munición: <span id="almacen-tuercas">⚙️ ⚙️ ⚙️</span></span> | <span>🗑️ Encestadas: <strong id="aciertos-fisica">0</strong> / 3</span>
+            </div>
+            <div class="escenario-fisica">
+                <div id="brazo-robotico" class="brazo-dispositivo">🤖
+                    <div id="tuerca-municion" class="tuerca-objeto">⚙️</div>
+                </div>
+                <div class="linea-guia-parabola"></div>
+                <div class="caja-objetivo">🗑️</div>
+            </div>
+            <div class="controles-fisica">
+                <button onclick="cambiarAngulo(5)">🔼 Subir (<span id="txt-angulo">45</span>°)</button>
+                <button onclick="cambiarAngulo(-5)">🔽 Bajar</button>
+                <button class="btn-accion-rojo" onclick="lanzarTuerca()">🚀 ¡Fuego!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal-biomimetica" class="pantalla-emergente" onclick="cerrarFuera(event)">
+        <div class="contenido-emergente">
+            <div id="caja-biomimetica-dinamica">
+                <h3>🦎 Operación Biomimética</h3>
+                <p class="instruccion-juego">Nivel <span id="num-nivel">1</span> de 3: Elige la adaptación.</p>
+                <div class="marcador-juego-interno">
+                    <span>❤️ Vidas: <strong id="vidas-biologia">3</strong></span>
+                </div>
+                <div class="pantalla-mision">
+                    <h4 id="titulo-mision">Misión 1: El Humedal</h4>
+                    <p id="descripcion-mision">Cruza aguas poco profundas y lodo blando sin hundirte.</p>
+                </div>
+                <div id="galeria-opciones-biologia" class="galeria-imagenes-opciones">
+                    <div class="tarjeta-opcion-img" onclick="verificarMisionImagen('A')">
+                        <img id="img-optA" src= "imagenes/imgA.jpeg" alt="A">
+                        <span id="txt-optA">Pezuñas</span>
+                    </div>
+                    <div class="tarjeta-opcion-img" onclick="verificarMisionImagen('B')">
+                        <img id="img-optB" src="imagenes/imgB.jpeg" alt="B">
+                        <span id="txt-optB">Membranas</span>
+                    </div>
+                    <div class="tarjeta-opcion-img" onclick="verificarMisionImagen('C')">
+                        <img id="img-optC" src="imagenes/imgC.jpeg" alt="C">
+                        <span id="txt-optC">Garras</span>
+                    </div>
+                </div>
+                <div id="resultado-robot-final" class="robot-final-armado" style="display: none;">
+                    <h4>🤖 ¡Bio-Robot Completado!</h4>
+                    <div class="partes-robot-lista">
+                        <p>🟢 Base: <strong id="part-soporte">-</strong></p>
+                        <p>🟢 Soporte: <strong id="part-agarre">-</strong></p>
+                        <p>🟢 Agarre: <strong id="part-hidro">-</strong></p>
+                    </div>
+                    <button class="btn-reinicio" onclick="reiniciarJuegoBiologia()">Reiniciar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SCRIPTS DE INTERACCIÓN Y JUEGOS -->
+    <script>
+        // Funciones para abrir las secciones principales
+        function abrirQuimica() { abrirMinijuego('modal-quimica'); }
+        function abrirBiologia() { abrirMinijuego('modal-biologia'); }
+        function abrirFisica() { abrirMinijuego('modal-fisica'); }
+        function abrirControl() { abrirMinijuego('modal-control'); }
+        function abrirGlosario() { abrirMinijuego('modal-glosario'); }
+
+        // Funciones específicas para minijuegos
+        function abrirObeth() { abrirMinijuego('modal-obeth'); }
+        function abrirParabola() { abrirMinijuego('modal-parabola'); }
+        function abrirBiomimetica() { abrirMinijuego('modal-biomimetica'); }
+        function abrirAlquimia() { abrirMinijuego('modal-alquimia'); }  
+
+
+        function cerrarMinijuego(idModal) {
+            const modal = document.getElementById(idModal);
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function intercambiarMenu() {
+            document.getElementById('opciones-desplegables').classList.toggle('activo');
+        }
+
+        function mostrarSeccion(idSeccion) {
+            const elemento = document.getElementById(idSeccion);
+            if (elemento) {
+                elemento.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function cerrarFuera(event) {
+            if (event.target.classList.contains('pantalla-emergente')) {
+                event.target.style.display = 'none';
+            }
+        }
+                const preguntasTrivia = [
+            { musculoCorrecto: 'cigomatico', textoPregunta: '🤖 Obeth pregunta: "Para poder imitar a los humanos necesito expresar alegría... ¿Puedes indicarme cuál es el <b>Músculo Cigomático</b> que me permite sonreír?"', pistaAudio: '1' },
+            { musculoCorrecto: 'frontal', textoPregunta: '🤖 Obeth pregunta: "A veces los algoritmos fallan y me da un poco de enfado... ¿Dónde está el <b>Músculo Frontal</b> que usan para fruncir el ceño en la frente?"', pistaAudio: '2' },
+            { musculoCorrecto: 'orbicular', textoPregunta: '🤖 Obeth pregunta: "Mis sensores visuales necesitan limpiarse constantemente imitando sus pestañeos. ¿Cuál es el <b>Músculo Orbicular de los párpados</b>?"', pistaAudio: '3' }
+        ];
+
+        let preguntaActualIndex = 0;
+        let intentosRestantes = 3;
+        let juegoBloqueado = true; // Se desbloquea al conectar el USB o al iniciar la voz
+        let puertoSerial = null;
+
+        // CONEXIÓN AL ARDUINO POR CABLE USB
+        async function conectarArduino() {
+            try {
+                puertoSerial = await navigator.serial.requestPort();
+                await puertoSerial.open({ baudRate: 9600 });
+                juegoBloqueado = false;
+                document.getElementById('burbuja-dialogo-robot').innerHTML = "🔌 ¡Conexión Serial Establecida! Iniciando juego...";
+                setTimeout(() => { reiniciarJuego(); }, 1500);
+            } catch (error) {
+                // MODO DE RESPALDO: Si no tienes el Arduino conectado en este momento, igual te deja jugar usando el audio de la PC
+                document.getElementById('burbuja-dialogo-robot').innerHTML = "⚠️ No se detectó Arduino. Activando altavoces internos de la PC de respaldo...";
+                juegoBloqueado = false;
+                setTimeout(() => { reiniciarJuego(); }, 2000);
+                console.error(error);
+            }
+        }
+
+        function abrirObeth() { 
+            document.getElementById('modal-obeth').style.display = 'flex'; 
+        }
+
+        function reiniciarJuego() {
+            preguntaActualIndex = 0;
+            intentosRestantes = 3;
+            juegoBloqueado = false;
+            document.getElementById('btn-reiniciar-trivia').style.display = 'none';
+            actualizarInterfazIntentos();
+            mostrarPregunta();
+        }
+
+        function actualizarInterfazIntentos() {
+            const txtIntentos = document.getElementById('contador-intentos');
+            if (txtIntentos) {
+                txtIntentos.innerHTML = `❤️ Intentos: ${intentosRestantes}/3`;
+                txtIntentos.style.color = intentosRestantes === 1 ? "#e53e3e" : "#fc8181";
+            }
+        }
+
+        function mostrarPregunta() {
+            if (juegoBloqueado) return;
+            const cajaTexto = document.getElementById('burbuja-dialogo-robot');
+            if (cajaTexto) {
+                const textoLimpio = preguntasTrivia[preguntaActualIndex].textoPregunta;
+                cajaTexto.innerHTML = textoLimpio;
+                cajaTexto.style.borderLeftColor = "#63b3ed";
+                
+                // Intenta hablar por el parlante físico del robot
+                enviarComandoSerial(preguntasTrivia[preguntaActualIndex].pistaAudio);
+                // Respaldo de voz por si acaso
+                robotHablaConVoz(textoLimpio.replace(/<[^>]*>/g, ''));
+            }
+        }
+
+        async function validarRespuesta(musculoPulsado) {
+            if (juegoBloqueado) return;
+
+            const cajaTexto = document.getElementById('burbuja-dialogo-robot');
+            const respuestaCorrecta = preguntasTrivia[preguntaActualIndex].musculoCorrecto;
+
+            let nombreOficial = "";
+            if (musculoPulsado === 'frontal') nombreOficial = "Músculo frontal";
+            if (musculoPulsado === 'orbicular') nombreOficial = "Músculo orbicular de los párpados";
+            if (musculoPulsado === 'cigomatico') nombreOficial = "Músculo cigomático mayor";
+
+            if (musculoPulsado === respuestaCorrecta) {
+                enviarComandoSerial("4"); // Manda señal de acierto al Arduino
+                robotHablaConVoz(`Has tocado el ${nombreOficial}. ¡Excelente! Respuesta correcta.`);
+
+                cajaTexto.innerHTML = `📍 Has tocado el <b>${nombreOficial.toUpperCase()}</b>.<br><br>🎉 <b>¡Excelente! ¡Es la respuesta correcta!</b> Sincronizando mi sistema facial...`;
+                cajaTexto.style.borderLeftColor = "#48bb78";
+
+                juegoBloqueado = true;
+                setTimeout(() => {
+                    preguntaActualIndex++;
+                    juegoBloqueado = false;
+                    if (preguntaActualIndex < preguntasTrivia.length) {
+                        mostrarPregunta();
+                    } else {
+                        juegoBloqueado = true;
+                        enviarComandoSerial("6"); // Victoria en Arduino
+                        cajaTexto.innerHTML = '🏆 <b>¡Felicidades Humano!</b> Has completado todo el mapeo anatómico de mi sistema facial.';
+                        robotHablaConVoz("¡Felicidades Humano! Mapeo facial completo.");
+                    }
+                }, 4000);
+
+            } else {
+                intentosRestantes--;
+                actualizarInterfazIntentos();
+
+                if (intentosRestantes > 0) {
+                    enviarComandoSerial("5"); // Manda señal de error al Arduino
+                    robotHablaConVoz(`Has tocado el ${nombreOficial}. Error. Inténtalo de nuevo.`);
+
+                    cajaTexto.innerHTML = `📍 Has tocado el <b>${nombreOficial.toUpperCase()}</b>.<br><br>❌ <b>¡BEEP-ERROR!</b> Ese componente mueve otra zona de mi cara. ¡Te quedan ${intentosRestantes} intentos!`;
+                    cajaTexto.style.borderLeftColor = "#e53e3e";
+                    
+                    juegoBloqueado = true;
+                    setTimeout(() => { 
+                        juegoBloqueado = false;
+                        mostrarPregunta();
+                    }, 4000);
+                } else {
+                    juegoBloqueado = true;
+                    enviarComandoSerial("7"); // Game over en Arduino
+                    robotHablaConVoz("Alerta. Sistema bloqueado. Te has quedado sin intentos.");
+                    cajaTexto.innerHTML = `🚨 <b>SISTEMA BLOQUEADO.</b> Te has quedado sin intentos. Mis servomotores se han desconfigurado por completo.`;
+                    cajaTexto.style.borderLeftColor = "#e53e3e";
+                    document.getElementById('btn-reiniciar-trivia').style.display = 'block';
+                }
+            }
+        }
+
+        //  OBETHENVIAR SEÑAL POR EL PUERTO SERIAL USB
+        async function enviarComandoSerial(letra) {
+            if (puertoSerial && puertoSerial.writable) {
+                try {
+                    const encoder = new TextEncoder();
+                    const writer = puertoSerial.writable.getWriter();
+                    await writer.write(encoder.encode(letra));
+                    writer.releaseLock();
+                } catch(e) { console.log("Error serial:", e); }
+            }
+        }
+
+        // REPRODUCCIÓN DE VOZ DESDE LA PROPIA COMPUTADORA
+        function robotHablaConVoz(mensaje) {
+            window.speechSynthesis.cancel();
+            const enunciado = new SpeechSynthesisUtterance(mensaje);
+            enunciado.lang = 'es-ES'; 
+            enunciado.pitch = 0.8;  
+            enunciado.rate = 1.0;   
+            window.speechSynthesis.speak(enunciado); // CORREGIDO AQUÍ
+        }
+
+        // Funciones básicas de tu menú principal
+        function abrirMinijuego(id) { document.getElementById(id).style.display = 'flex'; }
+        function intercambiarMenu() { document.getElementById('opciones-desplegables').classList.toggle('activo'); }
+        function cerrarFuera(e) { if(e.target.classList.contains('pantalla-emergente')) e.target.style.display = 'none'; }
+        let pos = 0;
+        function moverCarrusel(d) {
+            const t = document.getElementById('tira-juegos'); if(!t) return;
+            pos += d; if(pos < 0) pos = 0; if(pos > 0) pos = 0; 
+            t.style.transform = `translateX(-${pos * 370}px)`;
+        }
+
+//PARABOLAS JUEGOS
+// ==========================================
+// CONTROL DE PARÁBOLAS Y ÁNGULOS DEFINITIVO
+// ==========================================
+let anguloActual = 45;
+let intentosFisica = 3;
+let aciertosFisica = 0;
+let juegoFisicaBloqueado = false;
+function cambiarAngulo(valor) {
+    if (juegoFisicaBloqueado) return;
+    
+    anguloActual = Math.max(10, Math.min(85, anguloActual + valor));
+    
+    const brazo = document.getElementById('brazo-robotico');
+    if (brazo) brazo.style.transform = `rotate(-${anguloActual}deg)`;
+    
+    const txtAngulo = document.getElementById('txt-angulo');
+    if (txtAngulo) txtAngulo.innerText = anguloActual;
+    
+    const guia = document.querySelector('.linea-guia-parabola');
+    if (guia) guia.style.transform = `rotate(-${anguloActual}deg)`;
+}
+
+function lanzarTuerca() {
+    if (juegoFisicaBloqueado || intentosFisica <= 0) return;
+    juegoFisicaBloqueado = true;
+
+    const tuerca = document.getElementById('tuerca-municion');
+    const objetivo = document.querySelector('.caja-objetivo');
+    if (!tuerca || !objetivo) {
+        juegoFisicaBloqueado = false;
+        return;
+    }
+
+    intentosFisica--;
+    const almacen = document.getElementById('almacen-tuercas');
+    if (almacen) {
+        const iconos = ["", "⚙️", "⚙️ ⚙️", "⚙️ ⚙️ ⚙️"];
+        almacen.innerText = iconos[intentosFisica];
+    }
+    
+    const marcadorIntentos = document.getElementById('intentos-fisica');
+    if (marcadorIntentos) marcadorIntentos.innerText = intentosFisica;
+
+    const tiroValido20 = (anguloActual >= 15 && anguloActual <= 25);
+    const tiroValido60 = (anguloActual >= 55 && anguloActual <= 65);
+
+    // Si el ángulo es correcto, la tuerca viaja directo al centro del bote. Si no, se pasa de largo al suelo.
+    const targetX = tiroValido20 || tiroValido60 
+        ? (objetivo.offsetLeft - tuerca.offsetLeft + 10) 
+        : (objetivo.offsetLeft - tuerca.offsetLeft + 120);
+        
+    const targetY = tiroValido20 || tiroValido60 
+        ? (objetivo.offsetTop - tuerca.offsetTop + 15) 
+        : (objetivo.offsetTop - tuerca.offsetTop + 60);
+
+    let progreso = 0;
+    const velocidadAnimacion = 0.025; 
+    const alturaMaximaParabola = tiroValido20 ? 60 : 190; // Parábola bajita para 20°, alta para 60°
+
+    const intervalo = setInterval(() => {
+        progreso += velocidadAnimacion;
+
+        if (progreso >= 1) {
+            clearInterval(intervalo);
+            tuerca.style.transform = `translate(${targetX}px, ${targetY}px) rotate(360deg)`;
+
+            setTimeout(() => {
+                if (tiroValido20 || tiroValido60) {
+                    aciertosFisica++;
+                    const txtAciertos = document.getElementById('aciertos-fisica');
+                    if (txtAciertos) txtAciertos.innerText = aciertosFisica;
+
+                    if (aciertosFisica >= 3) {
+                        const escenario = document.getElementById('escenario-juego-parabola');
+                        const controles = document.getElementById('controles-juego-parabola');
+                        const premio = document.getElementById('premio-fisica-final');
+                        
+                        if (escenario) escenario.style.display = 'none';
+                        if (controles) controles.style.display = 'none';
+                        if (premio) premio.style.display = 'block';
+                    } else {
+                        alert(`🎯 ¡Espectacular tiro! Llevas ${aciertosFisica} de 3 canastas.`);
+                        tuerca.style.transform = "translate(0px, 0px)";
+                        if (intentosFisica > 0) juegoFisicaBloqueado = false;
+                    }
+                } else {
+                    if (intentosFisica <= 0 && aciertosFisica < 3) {
+                        alert("💥 ¡Munición Agotada! El brazo se quedó sin tuercas. ¡Inténtalo de nuevo!");
+                        reiniciarJuegoFisicaCompleto();
+                    } else {
+                        alert("❌ ¡Tiro errado! Ajusta el ángulo con los botones e intenta otra vez.");
+                        tuerca.style.transform = "translate(0px, 0px)";
+                        juegoFisicaBloqueado = false;
+                    }
+                }
+            }, 200);
+        } else {
+            let actualX = targetX * progreso;
+            let trayectoriaLinealY = targetY * progreso;
+            let efectoArcoParabola = alturaMaximaParabola * 4 * progreso * (1 - progreso);
+            let actualY = trayectoriaLinealY - efectoArcoParabola;
+
+            tuerca.style.transform = `translate(${actualX}px, ${actualY}px) rotate(${progreso * 720}deg)`;
+        }
+    }, 20);
+}
+
+
+function reiniciarJuegoFisicaCompleto() {
+    intentosFisica = 3;
+    aciertosFisica = 0;
+    anguloActual = 45;
+    juegoFisicaBloqueado = false;
+    
+    const almacen = document.getElementById('almacen-tuercas');
+    if (almacen) almacen.innerText = "⚙️ ⚙️ ⚙️";
+    
+    const txtAciertos = document.getElementById('aciertos-fisica');
+    if (txtAciertos) txtAciertos.innerText = aciertosFisica;
+    
+    const marcadorIntentos = document.getElementById('intentos-fisica');
+    if (marcadorIntentos) marcadorIntentos.innerText = intentosFisica;
+    
+    const escenario = document.getElementById('escenario-juego-parabola');
+    const controles = document.getElementById('controles-juego-parabola');
+    const premio = document.getElementById('premio-fisica-final');
+    
+    if (escenario) escenario.style.display = 'flex';
+    if (controles) controles.style.display = 'flex';
+    if (premio) premio.style.display = 'none';
+    
+    const tuerca = document.getElementById('tuerca-municion');
+    if (tuerca) tuerca.style.transform = "translate(0px, 0px)";
+    
+    cambiarAngulo(0);
+}
+
+//BIOMIMETICA
+let vidasBiologia = 3;
+let nivelActual = 0;
+let eleccionesRobot = [];
+
+const misionesAmbientales = [
+    {
+        titulo: "Misión 1: El Humedal", desc: "Avanza sobre lodo blando y aguas poco profundas sin atascarte.",
+        imgA: "imagenes/imgA.jpeg", txtA: "Pezuñas de Caballo",
+        imgB: "imagenes/imgB.jpeg", txtB: "Membranas de Rana",
+        imgC: "imagenes/imgC.jpeg", txtC: "Garras de Águila",
+        correcta: "B", parte: "Soporte de Membranas Hidrodinámicas",
+        bg: "url('imagenes/manglar.jpg')"
+    },
+    {
+        titulo: "Misión 2: El Desierto", desc: "Escala dunas de arena suelta y resiste el calor extremo del suelo.",
+        imgA: "imagenes/GATO.jpeg", txtA: "Patas de Gato",
+        imgB: "imagenes/PULPO.jpg", txtB: "Tentáculos de Pulpo",
+        imgC: "imagenes/camello.jpeg", txtC: "Almohadillas de Camello",
+        correcta: "C", parte: "Aislamiento de Almohadillas Térmicas",
+        bg: "url('imagenes/fondo3.jpeg')"
+    },
+    {
+        titulo: "Misión 3: La Selva", desc: "Trepa árboles altos con musgo húmedo para vigilar desde arriba.",
+        imgA: "imagenes/geko.jpeg", txtA: "Microventosas de Gecko",
+        imgB: "imagenes/llanta.jpeg", txtB: "Ruedas de Caucho",
+        imgC: "imagenes/atun.jpeg", txtC: "Aletas de Atún",
+        correcta: "A", parte: "Microventosas de Agarre Molecular",
+        bg: "url('imagenes/fondo3.1.jpeg')"
+    }
+];
+
+
+function actualizarNivelImagen() {
+    const cajaBio = document.getElementById('caja-biomimetica-dinamica');
+    
+    if (nivelActual < misionesAmbientales.length) {
+        // Fondos e información textual de la misión
+        cajaBio.style.backgroundImage = misionesAmbientales[nivelActual].bg;
+        document.getElementById('num-nivel').innerText = nivelActual + 1;
+        document.getElementById('titulo-mision').innerText = misionesAmbientales[nivelActual].titulo;
+        document.getElementById('descripcion-mision').innerText = misionesAmbientales[nivelActual].desc;
+        
+        // Imágenes y etiquetas de las opciones
+        document.getElementById('img-optA').src = misionesAmbientales[nivelActual].imgA;
+        document.getElementById('txt-optA').innerText = misionesAmbientales[nivelActual].txtA;
+        
+        document.getElementById('img-optB').src = misionesAmbientales[nivelActual].imgB;
+        document.getElementById('txt-optB').innerText = misionesAmbientales[nivelActual].txtB;
+        
+        document.getElementById('img-optC').src = misionesAmbientales[nivelActual].imgC;
+        document.getElementById('txt-optC').innerText = misionesAmbientales[nivelActual].txtC;
+    } else {
+        // Pantalla de fin de juego (Victoria)
+        document.getElementById('galeria-opciones-biologia').style.display = 'none';
+        document.getElementById('resultado-robot-final').style.display = 'block';
+        document.getElementById('part-soporte').innerText = eleccionesRobot[0] || '-';
+        document.getElementById('part-agarre').innerText = eleccionesRobot[1] || '-';
+        document.getElementById('part-hidro').innerText = eleccionesRobot[2] || '-';
+        cajaBio.style.backgroundImage = "none";
+        cajaBio.style.backgroundColor = "#edf2f7";
+    }
+}
+
+/* --- CONTINUACIÓN DEL JUEGO 3: OPERACIÓN BIOMIMÉTICA --- */
+function verificarMisionImagen(opcion) {
+    if (vidasBiologia <= 0) return;
+    
+    if (opcion === misionesAmbientales[nivelActual].correcta) {
+        alert("🤖 ¡Adaptación exitosa! Tu robot asimiló el diseño biológico.");
+        eleccionesRobot.push(misionesAmbientales[nivelActual].parte);
+        nivelActual++;
+        actualizarNivelImagen();
+    } else {
+        vidasBiologia--;
+        document.getElementById('vidas-biologia').innerText = vidasBiologia;
+        
+        if (vidasBiologia <= 0) {
+            alert("💥 ¡Estructura colapsada! El diseño no resistió las condiciones hostiles.");
+            reiniciarJuegoBiologia();
+        } else {
+            alert("❌ El componente falló en este terreno. ¡Elige otro animal!");
+        }
+    }
+}
+
+function reiniciarJuegoBiologia() {
+    vidasBiologia = 3;
+    nivelActual = 0;
+    eleccionesRobot = [];
+    
+    document.getElementById('vidas-biologia').innerText = vidasBiologia;
+    document.getElementById('galeria-opciones-biologia').style.display = 'grid';
+    document.getElementById('resultado-robot-final').style.display = 'none';
+    
+    actualizarNivelImagen();
+}
+//carrusel//
+// CONTROL DEL CARRUSEL DE JUEGOS
+let posicionActual = 0;
+
+function moverCarrusel(direccion) {
+    const tira = document.getElementById('tira-juegos');
+    if (!tira) return;
+    
+    const tarjetaWidth = 370; 
+    const totalTarjetas = document.querySelectorAll('.tarjeta-juego-contenedor').length;
+    const ventanaVisible = document.querySelector('.carrusel-ventana');
+    if (!ventanaVisible) return;
+    
+    const ventanaWidth = ventanaVisible.offsetWidth;
+    const tarjetasVisibles = Math.floor(ventanaWidth / tarjetaWidth) || 1;
+    const maxPosicion = totalTarjetas - tarjetasVisibles;
+
+    posicionActual += direccion;
+    
+    if (posicionActual < 0) {
+        posicionActual = maxPosicion;
+    } else if (posicionActual > maxPosicion) {
+        posicionActual = 0;
+    }
+
+    const desplazamiento = posicionActual * tarjetaWidth;
+    tira.style.transform = `translateX(-${desplazamiento}px)`;
+}
+
+function abrirMinijuego(idModal) {
+    const modal = document.getElementById(idModal);
+    if (modal) {
+        modal.style.display = 'flex';
+    }
+}
+
+
+
+    </script>
+</body>
+</html>
